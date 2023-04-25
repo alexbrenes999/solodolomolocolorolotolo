@@ -1,7 +1,17 @@
 import { AppBar, Box, Toolbar, Typography } from '@material-ui/core'; //removed the 'Button'
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../context/authContext';
 
 function Navbar() {
+    const { user, logout } = useContext(AuthContext);
+
+    const onLogout = () => {
+        logout();
+        Navigate('/')
+    }
+console.log(user);
+
     return (
         <Box sx={{flexGrow: 1}}>
             <AppBar position='static'>

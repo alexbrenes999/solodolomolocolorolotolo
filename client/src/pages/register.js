@@ -1,9 +1,8 @@
 import { useContext, useState } from "react";
 import { AuthContext } from '../context/authContext';
-import { userForm } from '../utils/hooks';
+import { useForm } from '../utils/hooks';
 import { useMutation } from '@apollo/react-hooks';
-
-import { Container, TextField, Stack } from "@mui/material";
+import { Container, TextField, Stack, Alert, Button } from "@mui/material";
 
 import { gql } from '@apollo/react-hooks';
 import { useNavigate } from 'react-router-dom';
@@ -30,9 +29,10 @@ function Register(props) {
 
     function registerUserCallback() {
         console.log('Callback hit');
+        registerUser();
     }
 
-    const { onChange, onSubmit, values } = userForm(registerUserCallback, {
+    const { onChange, onSubmit, values } = useForm(registerUserCallback, {
         firstName: '',
         lastName: '',
         username: '',
@@ -87,6 +87,14 @@ function Register(props) {
                     onChange={onChange}
                 />
             </Stack>
+            {errors.map(function(error){
+                return (
+                    <Alert>
+                        {error.message}
+                    </Alert>
+                );
+            })}
+            <Button variant="contained" onClick={onSubmit}>Register</Button>
         </Container>
     )
 }
