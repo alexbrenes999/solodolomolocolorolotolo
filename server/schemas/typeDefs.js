@@ -9,14 +9,15 @@ type User {
     password: String!
 }
 
-input createInput {
+input RegisterInput {
     firstName: String!
     lastName: String!
     username: String!
     password: String!
+    confirmPassword: String!
 }
 
-input loginInput {
+input LoginInput {
     username: String!
     password: String!
 }
@@ -26,16 +27,9 @@ type Query {
 }
 
 type Mutation {
-    createUser(username: String!, password: String!, firstName: String!, lastName: String!): User
+    registerUser(username: String!, password: String!, firstName: String!, lastName: String!): User
     loginUser(username: String!, password: String!): User
 }
 `;
-// input User {
-//     username: String!
-//     password: String!
-//     email: String!
-//     firstName: String!
-//     lastName: String!
-// }
 
 export default typeDefs;
