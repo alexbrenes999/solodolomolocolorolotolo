@@ -15,14 +15,15 @@ app.use(bodyParser.urlencoded({limit: "30mb", extended: true }));
 app.use(cors());
 
 const CONNECTION_URL = 'mongodb+srv://alexbrenes:Tyra6310@onlydevs.riluyn8.mongodb.net/?retryWrites=true&w=majority';
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3005;
 
 const server = new ApolloServer({
     typeDefs,
     resolvers,
+    context: ({ req }) => ({ req })
     // context: authMiddleware,  ----------------  not ready yet but set for when we incorporate JWT
 });
 
 mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true})
-    .then(() => server.listen(PORT, () => console.log(`Server running on port: ${PORT}`)))
+    .then(() => server.listen(PORT, () => console.log(`Server running on port: http://localhost:${PORT}`)))
     .catch((err) => console.log(err));
