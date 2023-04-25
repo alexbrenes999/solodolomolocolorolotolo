@@ -9,26 +9,18 @@ type User {
     password: String!
 }
 
-input RegisterInput {
-    firstName: String!
-    lastName: String!
-    username: String!
-    password: String!
-    confirmPassword: String!
-}
-
-input LoginInput {
-    username: String!
-    password: String!
-}
-
 type Query {
     user(id: ID!): User
 }
 
+type Auth {
+    token: ID
+    user: User
+}
+
 type Mutation {
-    registerUser(username: String!, password: String!, firstName: String!, lastName: String!): User
-    loginUser(username: String!, password: String!): User
+    registerUser(firstName: String!, lastName: String!, username: String!, password: String!): Auth
+    loginUser(username: String!, password: String!): Auth
 }
 `;
 
