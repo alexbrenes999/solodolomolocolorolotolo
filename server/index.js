@@ -14,7 +14,7 @@ app.use(bodyParser.json({limit: "30mb", extended: true}));
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true }));
 app.use(cors());
 
-const CONNECTION_URL = 'mongodb+srv://alexbrenes:Tyra6310@onlydevs.riluyn8.mongodb.net/?retryWrites=true&w=majority';
+const CONNECTION_URL = 'mongodb+srv://alexbrenes:Tyra6310@onlydevs.riluyn8.mongodb.net/onlydevsdb?retryWrites=true&w=majority';
 const PORT = process.env.PORT || 3005;
 
 const server = new ApolloServer({
